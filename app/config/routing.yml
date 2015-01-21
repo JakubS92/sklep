@@ -1,0 +1,6 @@
+fos_user:
+    resource: "@FOSUserBundle/Resources/config/routing/all.xml"
+projekt_sklep_movie:
+    resource: "@ProjektSklepBundle/Controller/"
+    type:     annotation
+    prefix:   /
