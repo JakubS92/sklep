@@ -1,0 +1,4 @@
+services:
+#    projekt_sklep.example:
+#        class: Projekt\SklepBundle\Example
+#        arguments: [@service_id, "plain_value", %parameter%]

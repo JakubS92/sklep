@@ -1,0 +1,3 @@
+projekt_sklep_homepage:
+    path:     /hello/{name}
+    defaults: { _controller: ProjektSklepBundle:Default:index }
