@@ -1,0 +1,14 @@
+<div class="col-md-3">
+    <p class="lead">Kategorie</p>
+    <div class="list-group">
+    	{% for entity in entities %}
+        	<a href="#" class="list-group-item">{{ entity.name }}</a>
+        {% endfor %}
+        {% if is_granted("ROLE_USER") %}
+        	<div><div class="col-md-12" style="padding:0px"><a href="{{ path('category_new') }}" class="btn btn-xsbtn-primary btn-success pull-right">Dodaj kolejną <span class="glyphicon glyphicon-plus"></span></a></div>
+   			<div class="col-md-12" style="padding:0px">
+        	<a href="{{ path('category_manage') }}" class="btn btn-primary btn-warning btn-xs pull-right"><small>Zarządzaj - w budowie</small> <span class="glyphicon glyphicon-plus"></span></a></div></div>
+        {% endif %}
+    </div>
+</div>
+

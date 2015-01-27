@@ -1,0 +1,49 @@
+{% extends "ProjektSklepBundle:layout:layout.html.twig" %}
+{% block title %}Film{% endblock %}
+
+{% block content -%}
+    <h1>Movie</h1>
+
+    <table class="record_properties">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ entity.id }}</td>
+            </tr>
+            <tr>
+                <th>Title</th>
+                <td>{{ entity.title }}</td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>{{ entity.description }}</td>
+            </tr>
+            <tr>
+                <th>Director</th>
+                <td>{{ entity.director }}</td>
+            </tr>
+            <tr>
+                <th>Price</th>
+                <td>{{ entity.price }}</td>
+            </tr>
+            <tr>
+                <th>Imageurl</th>
+                <td>{{ entity.imageurl }}</td>
+            </tr>
+            <tr>
+                <th>Gwiazdki</th>
+                <td>{{ entity.stars }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+        <ul class="record_actions">
+    <li>
+        <a href="{{ path('main_page') }}">
+            Back to the list
+        </a>
+    </li>
+
+   
+</ul>
+{% endblock %}
