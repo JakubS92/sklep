@@ -1,0 +1,38 @@
+{% extends "ProjektSklepBundle:layout:layout.html.twig" %}
+{% block title %}Nowe zamówienie{% endblock %}
+
+
+{% block content %}
+
+    <h1>Wybrane pozycje</h1>
+
+	<div class="row clearfix">
+		<div class="col-md-12 column">
+			<div class="row">
+
+				{% for movie in movies %}
+					<div class="col-md-4">
+						<div class="thumbnail">
+							<img alt="300x200" src="{{ movie.imageurl }} " />
+							<div class="caption">
+								<h3>
+									{{ movie.title }}
+								</h3>
+								<p>
+									{{ movie.description }}
+								</p>
+								<p>
+									<a href="{{ path('deleteFromCart', {'id': movie.id}) }}" class="btn btn-danger btn-xs">Usuń pozycję</a>
+								</p>
+							</div>
+						</div>
+					</div>
+			{% endfor %}
+			</div>
+		</div>
+	</div>
+    {{ form(form) }}
+    
+
+<a href="{{ path('resetCart') }}" class="btn btn-danger"><span class="glyphicon glyphicon-remove"></span> Resetuj koszyk (anuluj zakupy)</a>
+{% endblock %}

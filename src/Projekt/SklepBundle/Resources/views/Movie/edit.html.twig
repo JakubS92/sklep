@@ -1,0 +1,12 @@
+{% extends "ProjektSklepBundle:Layout:layout.html.twig" %}
+{% block title %}Edytuj film{% endblock %}
+
+
+{% block content -%}
+    <h1>Edytuj film</h1>
+
+    {{ form(edit_form) }}
+
+    {{ form(delete_form) }}
+
+{% endblock %}

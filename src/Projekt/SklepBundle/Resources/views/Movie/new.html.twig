@@ -1,0 +1,8 @@
+{% extends "ProjektSklepBundle:layout:layout.html.twig" %}
+{% block title %}Dodaj nowy film{% endblock %}
+
+{% block content -%}
+{{ form(form) }}
+	{% form_theme form 'bootstrap_3_layout.html.twig' %}
+
+{% endblock %}

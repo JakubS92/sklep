@@ -1,0 +1,95 @@
+{% extends "ProjektSklepBundle:layout:layout.html.twig" %}
+{% block title %}Strona Głowna{% endblock %}
+
+
+{% block content %}
+
+  <div class="row carousel-holder">
+
+                    <div class="col-md-12">
+                        <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+                            <ol class="carousel-indicators">
+                                <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+                                <li data-target="#carousel-example-generic" data-slide-to="1"></li>
+                                <li data-target="#carousel-example-generic" data-slide-to="2"></li>
+                            </ol>
+                            <div class="carousel-inner">
+                                <div class="item active">
+                                    <img class="slide-image" src="http://www.thenug.com/sites/default/pub/120213/thenug-d13OMDVBJm.jpg" alt="">
+                                </div>
+                                <div class="item">
+                                    <img class="slide-image" src="http://i1.wp.com/www.brightverge.com/wp-content/uploads/2014/10/Ajay-Devgan-Movie-Action-Jackson-2014.jpg" alt="">
+                                </div>
+                                <div class="item">
+                                    <img class="slide-image" src="http://4.bp.blogspot.com/-nqznYtONjSE/UERl1decWDI/AAAAAAAAAl0/NEh9cNapSFk/s1600/49+-+Inception.jpg" alt="">
+                                </div>
+                            </div>
+                            <a class="left carousel-control" href="#carousel-example-generic" data-slide="prev">
+                                <span class="glyphicon glyphicon-chevron-left"></span>
+                            </a>
+                            <a class="right carousel-control" href="#carousel-example-generic" data-slide="next">
+                                <span class="glyphicon glyphicon-chevron-right"></span>
+                            </a>
+                        </div>
+                    </div>
+
+    </div>
+
+                <div class="row">
+                    {% set i = 0 %}      
+                    {% for entity in entities %}
+                    <div class="col-sm-4 col-lg-4 col-md-4">
+                        <div class="thumbnail">
+
+                             {% if is_granted("ROLE_USER") %}
+                                
+                                {{ form_start(delete_forms[i]) }}
+                                    {{ form_widget(delete_forms[i].submit, { 'label':' ', 'attr': {'class': 'btn btn-xs btn-danger glyphicon glyphicon-trash pull-right'} }) }}
+
+                                    <a href="{{ path('_edit', { 'id': entity.id }) }}" class="btn btn-xs btn-primary pull-right"> <span class="glyphicon glyphicon-cog"></span></a>
+                                {{ form_end(delete_forms[i]) }}
+                                {% set i = i + 1 %}
+
+
+
+                             {% endif %}
+                            <img src="{{ entity.imageurl }}" alt="Adres do foty w wymiarach 300x150 px" style="height:150px">
+                            <div class="caption">
+                                <h4 class="pull-right">${{ entity.price }}</h4>
+                                <h4><a href="{{ path('_show', { 'id': entity.id }) }}">{{ entity.title }}</a>
+                                </h4>
+                                
+                                <p><b>Opis</b> {{ entity.description }}</p>
+                                
+                                <p><b>Reżyser</b> {{ entity.director }} </p>
+                            </div>
+                            <div class="ratings">
+                                <p class="pull-right">
+                                    Kup<a href="{{ path('setCart', { 'id': entity.id }) }}" class="btn btn-success btn-xs"><span class="glyphicon glyphicon-plus"></span></a>
+                                </p>
+
+                                <p>
+                                    {% for i in 0..entity.stars %}
+                                         <span class="glyphicon glyphicon-star"></span>
+                                     {% endfor %}
+                                </p>
+                            </div>
+
+                        </div>
+                    </div>
+                     {% endfor %}
+
+
+                    {% if is_granted("ROLE_USER") %}
+
+                        <div class="col-sm-4 col-lg-4 col-md-4">
+                            <h4><a href="#">Jesteś administratorem</a>
+                            </h4>
+                            <p>Ta opcja jest dostepna tylko dla użytkowników z odpowiednią rangą</p>
+                            <a href="{{ path('_new') }}" class="btn btn-success">Dodaj nową pozycje <span class="glyphicon glyphicon-log-in"></span></a>
+                           
+                        </div>
+
+                    {% endif %}
+                </div>
+{% endblock %}
