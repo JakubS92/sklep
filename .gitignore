@@ -1,4 +1,6 @@
 app/cache/*
 app/logs/*
+vendor/*
+!vendor/friendsofsymfony/*
 *.bat
 *.sh
