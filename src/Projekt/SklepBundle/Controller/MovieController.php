@@ -30,11 +30,14 @@ class MovieController extends Controller
         $em = $this->getDoctrine()->getManager();
 
         $entities = $em->getRepository('ProjektSklepBundle:Movie')->findAll();
-
+        
+        $deleteForms = array();
         foreach ($entities as $entity) {
             $deleteForms[] = $this->createDeleteForm($entity->getId())->createView();
         }
-        
+	// Gdy nie ma żadnych filmów, przekieruje do tworzenia
+        if (count($deleteForms)<=0)
+		return $this->forward("ProjektSklepBundle:Movie:new"); 
         return array(
             'entities' => $entities,
             'delete_forms' => $deleteForms,
